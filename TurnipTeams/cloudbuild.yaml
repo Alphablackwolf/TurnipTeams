@@ -5,7 +5,7 @@ steps:
     path: '/persistent_volume'
   entrypoint: 'bash'
   args: 
-  - 'cp . /persistent_volume'
+  - '-c'
 - name: 'gcr.io/cloud-builders/docker'
   volumes:
   - name: 'persistentVolume'
