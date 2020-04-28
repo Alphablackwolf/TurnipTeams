@@ -1,8 +1,10 @@
 steps:
-- name: 'persistentVolumeLoad'
+- name: 'ubuntu'
   volumes:
   - name: 'persistentVolume'
     path: '/persistent_volume'
+  entrypoint: 'bash'
+  args: ['cp', '.', '/persistent_volume']
 - name: 'gcr.io/cloud-builders/docker'
   volumes:
   - name: 'persistentVolume'
