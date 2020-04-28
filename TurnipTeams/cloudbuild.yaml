@@ -4,7 +4,7 @@ steps:
   - name: 'persistentVolume'
     path: '/persistent_volume'
 - name: 'gcr.io/cloud-builders/docker'
-args: ['build', '-t', 'gcr.io/turnipteams/testweb:current', '-f', 'Dockerfile', '/persistent_volume']
+args: ['build', '-f', 'Dockerfile', '-t', 'gcr.io/turnipteams/testweb:current', '/persistent_volume']
 
 images:
 - 'gcr.io/turnipteams/testweb:current'
