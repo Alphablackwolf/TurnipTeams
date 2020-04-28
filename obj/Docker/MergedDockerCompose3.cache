@@ -1,0 +1,30 @@
+services:
+  turnipteams.web:
+    build:
+      args:
+        skip_client_build: "true"
+      context: C:\Users\Chris\Source\Repos\TurnipTeams
+      dockerfile: TurnipTeams/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: turnipteamsweb
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\Chris\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Chris\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+  turnipteams.web.angular.app:
+    build:
+      context: C:\Users\Chris\Source\Repos\TurnipTeams
+      dockerfile: TurnipTeams/ClientApp/Dockerfile
+    image: turnipteamsangularapp
+    ports:
+    - published: 4200
+      target: 4200
+    - published: 49153
+      target: 49153
+    volumes:
+    - C:\Users\Chris\Source\Repos\TurnipTeams\TurnipTeams\ClientApp:/app:rw
+version: '3.4'

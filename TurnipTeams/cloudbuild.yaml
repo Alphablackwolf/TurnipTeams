@@ -1,0 +1,6 @@
+steps:
+- name: gcr.io/cloud-builders/docker
+args: [ 'build', '-t', 'gcr.io/turnipteams/testweb:current', '-f', 'Dockerfile', '.' ]
+
+images:
+- 'gcr.io/turnipteams/testweb:current'

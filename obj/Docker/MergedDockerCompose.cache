@@ -1,0 +1,21 @@
+services:
+  turnipteams.web:
+    build:
+      args:
+        skip_client_build: "true"
+      context: C:\Users\Chris\Source\Repos\TurnipTeams
+      dockerfile: TurnipTeams/Dockerfile
+    image: turnipteamsweb
+  turnipteams.web.angular.app:
+    build:
+      context: C:\Users\Chris\Source\Repos\TurnipTeams
+      dockerfile: TurnipTeams/ClientApp/Dockerfile
+    image: turnipteamsangularapp
+    ports:
+    - published: 4200
+      target: 4200
+    - published: 49153
+      target: 49153
+    volumes:
+    - C:\Users\Chris\Source\Repos\TurnipTeams\TurnipTeams.Web\ClientApp:/app:rw
+version: '3.4'
