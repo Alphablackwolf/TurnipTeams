@@ -6,6 +6,8 @@ steps:
   entrypoint: 'bash'
   args: 
   - '-c'
+  - |
+        echo "Fail!"
 - name: 'gcr.io/cloud-builders/docker'
   volumes:
   - name: 'persistentVolume'
