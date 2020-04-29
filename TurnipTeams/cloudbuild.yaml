@@ -1,17 +1,5 @@
 steps:
-- name: 'ubuntu'
-  volumes:
-  - name: 'persistentVolume'
-    path: '/persistent_volume'
-  entrypoint: 'bash'
-  args: 
-  - '-c'
-  - |
-        echo "Fail!"
 - name: 'gcr.io/cloud-builders/docker'
-  volumes:
-  - name: 'persistentVolume'
-    path: '/persistent_volume'
   args: ['build', '-f', 'Dockerfile', '-t', 'gcr.io/turnipteams/testweb:current', '.']
 
 images:
