@@ -1,6 +1,13 @@
 steps:
+- name: 'ubuntu'
+  volumes:
+  - name: 'persistentVolume'
+    path: '/persistent_volume'
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-f', 'turnipteams/Dockerfile', '-t', 'gcr.io/turnipteams/testweb:current', '.']
+  volumes:
+  - name: 'persistentVolume'
+    path: '/persistent_volume'
+  args: ['build', '-f', 'Dockerfile', '-t', 'gcr.io/turnipteams/testweb:current', '.']
 
 images:
 - 'gcr.io/turnipteams/testweb:current'

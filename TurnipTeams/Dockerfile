@@ -8,7 +8,7 @@ EXPOSE 443
 FROM node:10.15-alpine AS client
 ARG skip_client_build=false
 WORKDIR /app
-COPY TurnipTeams/ClientApp .
+COPY /ClientApp .
 RUN [[ ${skip_client_build} = true ]] && echo "Skipping npm install" || npm install 
 RUN [[ ${skip_client_build} = true ]] && mkdir -p dist || npm run-script build
 
