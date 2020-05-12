@@ -15,7 +15,7 @@ RUN [[ ${skip_client_build} = true ]] && mkdir -p dist || npm run-script build
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["TurnipTeams.Web.csproj", "/"]
-RUN dotnet restore "TurnipTeams.Web.csproj"
+RUN dotnet restore "/TurnipTeams.Web.csproj"
 COPY . .
 WORKDIR "/src/TurnipTeams"
 RUN dotnet build "TurnipTeams.Web.csproj" -c Release -o /app/build
