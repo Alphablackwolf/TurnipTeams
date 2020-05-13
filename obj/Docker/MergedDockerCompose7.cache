@@ -16,7 +16,7 @@ services:
       ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
       ASPNETCORE_URLS: https://+:443;http://+:80;http://*:8080
       DOTNET_USE_POLLING_FILE_WATCHER: '1'
-      GOOGLE_APPLICATION_CREDENTIALS: C:\GoogleCreds\TurnipTeamsCreds.json
+      GOOGLE_APPLICATION_CREDENTIALS: /creds/TurnipTeamsCreds.json
       NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
     image: turnipteamsweb:dev
     labels:
@@ -32,6 +32,7 @@ services:
     tty: true
     volumes:
     - C:\Users\Chris\Source\Repos\TurnipTeams\TurnipTeams:/app:rw
+    - C:\GoogleCreds:/creds:rw
     - C:\Users\Chris\vsdbg\vs2017u5:/remote_debugger:rw
     - C:\Users\Chris\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
     - C:\Users\Chris\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro

@@ -16,7 +16,7 @@ services:
       ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
       ASPNETCORE_URLS: https://+:443;http://+:80;http://*:8080
       DOTNET_USE_POLLING_FILE_WATCHER: '1'
-      GOOGLE_APPLICATION_CREDENTIALS: C:\GoogleCreds\TurnipTeamsCreds.json
+      GOOGLE_APPLICATION_CREDENTIALS: /creds/TurnipTeamsCreds.json
       NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
     image: turnipteamsweb:dev
     labels:
@@ -38,6 +38,7 @@ services:
     - C:\Microsoft\Xamarin\NuGet:/root/.nuget/fallbackpackages:ro
     - C:\Users\Chris\.nuget\packages:/root/.nuget/packages:ro
     - C:\Users\Chris\Source\Repos\TurnipTeams:/src:rw
+    - C:\GoogleCreds:creds:rw
   turnipteams.web.angular.app:
     build:
       context: C:\Users\Chris\Source\Repos\TurnipTeams

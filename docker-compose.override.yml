@@ -5,9 +5,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80;http://*:8080
+      - GOOGLE_APPLICATION_CREDENTIALS=/creds/TurnipTeamsCreds.json
     ports:
       - "80"
       - "443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - C:/GoogleCreds:/creds

@@ -8,7 +8,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80;http://*:8080
-      GOOGLE_APPLICATION_CREDENTIALS: C:\GoogleCreds\TurnipTeamsCreds.json
+      GOOGLE_APPLICATION_CREDENTIALS: /creds/TurnipTeamsCreds.json
     image: turnipteamsweb
     ports:
     - target: 80
@@ -16,6 +16,7 @@ services:
     volumes:
     - C:\Users\Chris\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
     - C:\Users\Chris\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\GoogleCreds:creds:rw
   turnipteams.web.angular.app:
     build:
       context: C:\Users\Chris\Source\Repos\TurnipTeams
