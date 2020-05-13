@@ -1,10 +1,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using TurnipTeams.Data;
 using TurnipTeams.Models;
@@ -26,6 +23,13 @@ namespace TurnipTeams
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDataProtection()
+                .PersistKeysToGoogleCloudStorage(
+                    Configuration["DataProtection:Bucket"],
+                    Configuration["DataProtection:Object"])
+                .ProtectKeysWithGoogleKms(
+                    Configuration["DataProtection:KmsKeyName"]);
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
